@@ -19,6 +19,17 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
-rosidl_generate_interfaces(${PROJECT_NAME} "msg/Sensors.msg")
+set(srv_files 
+  "srv/RobotControl.srv"
+)
+set(msg_files
+  "msg/Pose.msg"
+  "msg/Sensors.msg"
+  "msg/MotorSpeeds.msg"
+  "msg/MotorEncoders.msg"
+  "msg/Robot.msg"
+)
+
+rosidl_generate_interfaces(${PROJECT_NAME} ${msg_files} ${srv_files})
 
 ament_package()
